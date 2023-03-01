@@ -1,1 +1,12 @@
 <p>list-cds works!</p>
+<div class="list">
+  <h2>Liste des CDs disponibles</h2>
+  <ng-container *ngFor="let cd of listCd">
+    <app-cd></app-cd>
+    <!---<img [src]="cd.thumbnail" [alt]="cd.title">
+    <h3>{{cd.title}}</h3>
+    <p>Artiste: {{cd.author}}</p>
+    <p>Prix: {{cd.price}} €</p>--->
+  </ng-container>
+</div>
+
