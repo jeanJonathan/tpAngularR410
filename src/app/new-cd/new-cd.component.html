@@ -1,0 +1,26 @@
+<p>new-cd works!</p>
+<div class="monForm">
+  <section>
+  <form [formGroup]="formulaire" (ngSubmit)="submit()">
+    <label>Titre:
+      <input  formControleName="title"/>
+    </label>
+    <label>Artiste:
+      <input  formControleName="author"/>
+    </label>
+    <label>Miniature:
+      <input  formControleName="price"/>
+    </label>
+    <label>Artiste:
+      <input  formControleName="thumbnail"/>
+    </label>
+    <label>Date de sortie:
+      <input  formControleName="dateDeSortie"/>
+    </label>
+    <label>Qunatite:
+      <input  formControleName="quantite"/>
+    </label>
+    <button type="submit" class="Button" [disabled]="!formulaire.valid">Valider</button>
+  </form>
+  </section>
+</div>
