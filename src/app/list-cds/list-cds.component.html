@@ -1,12 +1,31 @@
-<p>list-cds works!</p>
+<!---<p>list-cds works!</p>--->
+<!----
 <div class="list">
-  <h2>Liste des CDs disponibles</h2>
-  <ng-container *ngFor="let cd of listCd">
-    <app-cd></app-cd>
-    <!---<img [src]="cd.thumbnail" [alt]="cd.title">
+  <h2>Liste des cds disponibles</h2>---->
+  <!--Le ngContainer ne sera pas materialiser par contre
+  si on utilisait a la place un div, le div serait afficher-->
+  <!---<ng-container *ngFor="let cd of listCd">
+    <app-cd [cd]="listCd">
+    ---->
+   <!--- </app-cd>---->
+<!--ca nous affiche du coup 3 cd works--->
+  <!---<img [src]="cd.thumbail" [alt]="cd.title">
     <h3>{{cd.title}}</h3>
     <p>Artiste: {{cd.author}}</p>
-    <p>Prix: {{cd.price}} €</p>--->
+    <p>Prix: {{cd.price}} €</p>
+  </ng-container> --->
+  <!----
+  <div class="list-cd">
+    <ng-container *ngFor="let i of listCd">
+
+    </ng-container>
+  </div>
+</div> ----->
+
+<div class="list-cd">
+  <ng-container *ngFor="let unCD of listCd">
+    <app-cd *ngIf="unCD.quantite > 0" [cd]="unCD"></app-cd>
+
   </ng-container>
 </div>
 

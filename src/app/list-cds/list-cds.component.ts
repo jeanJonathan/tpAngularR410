@@ -14,43 +14,39 @@ import{Cd} from "../../../models/cd";
   styleUrls: ['./list-cds.component.scss']
 })
 export class ListCdsComponent implements OnInit{
-    listCd =[{
-      title:'The Dark Side of The Moon',
-      author:'Pink Floyd',
-      price : 12,
-      thumbail:'https://example.com/darkside.jpg',
-      dateDeSortie: new Date(1974,4,11),
-      quantite:1
-      },
-      {
-      title:'Pulse',
-      author:'Punk Flix',
-      price : 5,
-      thumbail:'https://example.com/darkside.jpg',
-      dateDeSortie: new Date(1974,4,11),
-      quantite:1
-      }
-      ];
-
+  //Declaration ci dessous tres importante
+    listCd!: Cd[];
   ngOnInit():void {
     // On rempli le tableau cds avec des Cd
     this.listCd =[{
-      title:'The Dark Side of The Moon',
-      author:'Pink Floyd',
-      price : 12,
-      thumbail:'https://example.com/darkside.jpg',
-      dateDeSortie: new Date(1974,4,11),
-      quantite:1
+      id: 1,
+      title : 'The Dark Side of the Moon',
+      author : 'Pink Floyd',
+      price : 10,
+      thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/c/c7/The_Dark_Side_of_the_Moon_Cover.svg',
+      dateDeSortie : new Date(1973, 3, 1),
+      quantite : 1,
+      onsale: true
     },
       {
-        title:'Pulse',
-        author:'Punk Flix',
+        id: 2,
+        title : 'Pulse',
+        author : 'Pink Floyd',
         price : 5,
-        thumbail:'https://example.com/darkside.jpg',
-        dateDeSortie: new Date(1974,4,11),
-        quantite:1
+        thumbnail : 'https://upload.wikimedia.org/wikipedia/en/3/36/Pink_Floyd_-_Pulse.png',
+        dateDeSortie : new Date(1974, 3, 1),
+        quantite : 290
+      },
+      {
+        id: 3,
+        title : 'The Dark Side of the Flood',
+        author : 'Pink Floyd',
+        price : 15,
+        thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/c/c7/The_Dark_Side_of_the_Moon_Cover.svg',
+        dateDeSortie : new Date(1979, 3, 1),
+        quantite : 0
       }
     ];
-
   }
+  //this.listcd = this.myCDsrvice.getAllCDs();
 }

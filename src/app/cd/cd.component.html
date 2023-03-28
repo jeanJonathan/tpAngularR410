@@ -1,1 +1,33 @@
+
+<!--Prof: Vous aurez des questions au tour des directives et tout au controle --->
+<!----
 <p>cd works!</p>
+<div class="cd-card" [ngClass] ={cdadded:cd.onsale===true}>
+  <h3>
+    {{cd.title|uppercase }}
+  </h3>
+  <p>Sortie le :{{cd.dateDeSortie|date: 'dd/mm/yyyy'}}</p>
+  //Notez qu'en angular on peut utiliser cette propore pipe
+  <p>Auteur: {{cd.author}}</p>
+  <p>Prix: {{cd.price|currency 'EUR'}}</p>
+  <p>En stock : <span [ngStyle]="{color:'rgb(0,'+cd.quantite+'0)'}">{{cd.quantite}}</span>
+  <button (click)="onAddCd">Ajouter Unite</button>
+  </p>
+  <p>
+    <img [src]="cd.thumbnail" [alt]="cd.title" >
+  </p>
+</div> --->
+<div class="cd-card" [ngClass]="{'cdonsale': unCd.onsale === true}">
+  <h2>{{ unCd.title | uppercase }}</h2>
+  <p>Sortie le : {{ unCd.dateDeSortie | date: "dd/MM/yyyy" }}</p>
+  <p>Auteur / Groupe : {{unCd.author}}</p>
+  <p>Prix : {{ unCd.price | currency:'EUR'}}</p>
+  <p>
+    En stock : <span [ngStyle]="{ color: 'rgb(0,'+ unCd.quantite +',0)'}">{{unCd.quantite}}</span>
+    <button (click)="onAddCd()">Ajouter une unité</button>
+  </p>
+  <p *ngFor="idcd ===undefined">
+    <a></a>
+  </p>
+  <img [src]="unCd.thumbnail" [alt]="unCd.title">
+</div>
