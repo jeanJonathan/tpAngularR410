@@ -10,9 +10,12 @@ import {NewCDComponent} from "./new-cd/new-cd.component";
 /*Il se base sur le tableau entre les url*/
 const routes: Route[] = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'catalog', component: ListCdsComponent },
   { path: 'cd/:id', component: CdComponent },
-  { path: 'addCd', component: NewCDComponent }
+  { path: 'addCd', component: NewCDComponent },
+  { path : '', redirectTo:'home',pathMatch: 'full'},
+  { path : '**',redirectTo:'home',pathMatch: 'full'}
 
 ]
 @NgModule({
