@@ -14,22 +14,18 @@ export class CdComponent implements  OnInit{
   @Input() cd!: Cd;
   idcd!: string;
   unCd!: Cd; // recu par le template listcd utilise par le template cd
-  onAddCd(){
-    this.cd.quantite +=1;
+  onAddCd() {
+    this.cd.quantite += 1;
   }
-/*
-  ngOnInit():void {
+  ngOnInit() {
     const idcd = this.route.snapshot.params['id'];
-    this.unCd = this.cd;
-    if(idcd !=undefined){
-      this.unCd = this.cd;
+    if(idcd !== undefined){
+      this.unCd = this.myCDservice.getCDById(+idcd);
+      this.idcd = idcd;
     }
     else{
-      this.cd = this.myCDservice.getCDById(idcd);
+      this.unCd = this.cd;
     }
-
-  }*/
-  ngOnInit() {
   }
 
 }

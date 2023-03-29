@@ -1,7 +1,7 @@
 <p>new-cd works!</p>
 <div class="monForm">
   <section>
-  <form [formGroup]="formulaire" (ngSubmit)="submit()">
+  <form [formGroup]="formulaire">
     <label>Titre:
       <input  formControleName="title"/>
     </label>
@@ -20,7 +20,20 @@
     <label>Qunatite:
       <input  formControleName="quantite"/>
     </label>
-    <button type="submit" class="Button" [disabled]="!formulaire.valid">Valider</button>
+    <button type="submit" class="Button" [disabled]="!formulaire.valid" (click)="addCd()">Valider</button>
   </form>
+  </section>
+  <section class="vueForm">
+    <h2>Vue du Cd</h2>
+      <div *ngIf="currentCD$ | async as unCd">
+        <h3>{{ unCd.title | uppercase }}</h3>
+        <p>Sortie le : {{ unCd.dateDeSortie | date: "dd/MM/yyyy" }}</p>
+        <p>Auteur / Groupe : {{unCd.author}}</p>
+        <img [src]="unCd.thumbnail" [alt]="unCd.title">
+        <p>Prix : {{ unCd.price | currency:'EUR'}}</p>
+        <p>
+          En stock : <span [ngStyle]="{ color: 'rgb(0,'+ unCd.quantite +',0)'}">{{unCd.quantite}}</span>
+        </p>
+      </div>
   </section>
 </div>

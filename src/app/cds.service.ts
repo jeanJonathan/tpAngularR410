@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Cd} from "../../models/cd";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 // @ts-ignore
 @Injectable({
@@ -9,8 +11,7 @@ export class CdsService {
 
   constructor() { }
 
-  getAllCDs():Cd[]{
-    //Rmq: On pouvait egalement utiliser le constructeur Cd
+  getAllCDs() : Cd[]{
     return [
       {
         id: 1,
@@ -38,16 +39,20 @@ export class CdsService {
         price : 15,
         thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/c/c7/The_Dark_Side_of_the_Moon_Cover.svg',
         dateDeSortie : new Date(1979, 3, 1),
-        quantite : 0
+        quantite : 1
       }
-
     ];
 
   }
-  //Soit on retourne Cd soit on retourne undefined
-  getCdById(id: number): Cd | undefined  {
-    const cd = this.getAllCDs().find(cd => cd.id === id);
-    return cd;
+
+  getCDById(id: number) : Cd{
+    const cd = this.getAllCDs().find( (cd) => cd.id === id);
+    if(cd){
+      return cd;
+    }
+    else{
+      throw new Error('Le CD n\'existe pas');
+    }
   }
 
 }
