@@ -26,7 +26,7 @@
     En stock : <span [ngStyle]="{ color: 'rgb(0,'+ unCd.quantite +',0)'}">{{unCd.quantite}}</span>
     <button (click)="onAddCd()">Ajouter une unité</button>
   </p>
-  <p *ngFor="idcd ===undefined">
+  <p *ngIf="idcd ===undefined">
     <a></a>
   </p>
   <img [src]="unCd.thumbnail" [alt]="unCd.title">
