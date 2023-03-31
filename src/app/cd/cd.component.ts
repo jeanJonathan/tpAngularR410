@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {Cd} from "../../../models/cd";
 import {Route, ActivatedRoute} from "@angular/router";
 import {CdsService} from "../cds.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-cd',
@@ -19,12 +20,11 @@ export class CdComponent implements  OnInit{
   }
   ngOnInit() {
     const idcd = this.route.snapshot.params['id'];
-    if(idcd !== undefined){
-      this.unCd = this.myCDservice.getCDById(+idcd);
+    if(idcd == undefined){
       this.idcd = idcd;
     }
     else{
-      this.unCd = this.cd;
+      this.myCDservice.getCDById(+this.idcd).subscribe(cd => this.unCd = cd );
     }
   }
 
