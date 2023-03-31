@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 })
 export class CdsService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getAllCDs() : Cd[]{
     return [

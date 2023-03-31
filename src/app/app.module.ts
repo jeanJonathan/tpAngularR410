@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import {RouterOutlet} from "@angular/router";
 import { NewCDComponent } from './new-cd/new-cd.component';
 import {ReactiveFormsModule} from "@angular/forms";
+//Pour nous permettre d'utiliser le service httpClient dans les import a l'endroit ou on aura besoin
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   //Le premier composant qui va etre charger dans l'application est dans app Component
