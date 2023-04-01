@@ -17,14 +17,21 @@ export class CdComponent implements  OnInit{
   unCd!: Cd; // recu par le template listcd utilise par le template cd
   onAddCd() {
     this.cd.quantite += 1;
-  }
-  ngOnInit() {
+  } ngOnInit(): void {
+    // Cas où page avec parametre
     const idcd = this.route.snapshot.params['id'];
-    if(idcd == undefined){
+    if(idcd !== undefined){
+      // Le + transforme la chaine de caractère en nombre
+      //this.unCd = this.cdservices.getCDById(+idcd);
+      //this.idcd = idcd;
+
+      this.myCDservice.getCDById(+idcd).subscribe(cd => this.unCd = cd);
+      // entre parenthese revient à ecrire
+      // function (cd){return this.leCd = cd;}
       this.idcd = idcd;
     }
     else{
-      this.myCDservice.getCDById(+this.idcd).subscribe(cd => this.unCd = cd );
+      this.unCd = this.cd;
     }
   }
 

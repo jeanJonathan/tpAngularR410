@@ -23,7 +23,7 @@
 </div> ----->
 
 <div class="list-cd">
-  <ng-container *ngFor="let unCD of listCd">
+  <ng-container *ngFor="let unCD of listCd$ | async ">
     <app-cd *ngIf="unCD.quantite > 0" [cd]="unCD"></app-cd>
 
   </ng-container>

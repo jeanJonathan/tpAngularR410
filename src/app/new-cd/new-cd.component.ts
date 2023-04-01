@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {map, Observable} from "rxjs";
+import {map, Observable, tap} from "rxjs";
 import {Cd} from "../../../models/cd";
 import {Validators} from "@angular/forms";
+import {CdsService} from "../cds.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-cd',
@@ -15,7 +17,10 @@ export class NewCDComponent {
   //Declaration de l'observable CurrentCd
   currentCD$ !:Observable<Cd>;
 
-  constructor(private formBuilder: FormBuilder) { }
+// Injection de dépendence du FormBuilder (services)
+  constructor(private formBuilder: FormBuilder,
+              private cdservices: CdsService,
+              private route: Router) { }
 
   ngOnInit(): void {
     let thumbRegex = new RegExp('https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp)$');
@@ -46,7 +51,7 @@ export class NewCDComponent {
 
     // Récupération des valeurs du formulaire en temps réel
     this.currentCD$ = this.formulaire.valueChanges.pipe(
-      map((formValue: { title: any; author: any; price: any; thumbnail: any; dateDeSortie: any; quantite: any; onSale: any; }) => (
+      map(formValue => (
         {
           id:0,
           title: formValue.title,
@@ -61,7 +66,21 @@ export class NewCDComponent {
     );
   }
 
-  addCd(){
-    console.log(this.formulaire.value);
+  onSubmitForm(){
+    let newCd: Cd = {
+      id: 0,
+      title: this.formulaire.get('title')?.value,
+      author: this.formulaire.get('author')?.value,
+      price: this.formulaire.get('price')?.value,
+      thumbnail: this.formulaire.get('thumbnail')?.value,
+      dateDeSortie: this.formulaire.get('dateDeSortie')?.value,
+      quantite: this.formulaire.get('quantite')?.value,
+    };
+
+    this.cdservices.addCD(newCd).pipe(
+      tap(() => this.route.navigate(['/catalogue']))
+    ).subscribe();
+
+
   }
 }

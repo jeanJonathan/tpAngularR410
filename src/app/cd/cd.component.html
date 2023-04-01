@@ -27,7 +27,7 @@
     <button (click)="onAddCd()">Ajouter une unité</button>
   </p>
   <p *ngIf="idcd ===undefined">
-    <a></a>
+    <button routerLink="/cd/{{unCd.id}}">Voir le détail</button>
   </p>
   <img [src]="unCd.thumbnail" [alt]="unCd.title">
 </div>

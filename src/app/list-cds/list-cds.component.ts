@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import{Cd} from "../../../models/cd";
 import {CdsService} from "../cds.service";
+import {Observable} from "rxjs";
 
   /*On utilisera ce Compononet pour afficher une liste de tous les Cd disponibles.
  Vous pouvez utiliser un *ngFor pour parcourir la liste des Cd
@@ -16,10 +17,11 @@ import {CdsService} from "../cds.service";
 })
 export class ListCdsComponent implements OnInit{
   //Declaration ci dessous tres importante
-    listCd!: Cd[];
+  //Lorsque vous declarer un observable par convention rajouter le $
+    listCd$!: Observable<Cd[]>;
   constructor(private myCdServices : CdsService) { }
   ngOnInit():void {
-    this.listCd = this.myCdServices.getAllCDs();
+    this.listCd$ = this.myCdServices.getAllCDs();
   }
 
 }

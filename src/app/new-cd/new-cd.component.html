@@ -20,7 +20,7 @@
     <label>Qunatite:
       <input  formControleName="quantite"/>
     </label>
-    <button type="submit" class="Button" [disabled]="!formulaire.valid" (click)="addCd()">Valider</button>
+    <button type="submit" class="Button" [disabled]="!formulaire.invalid" (click)="onSubmitForm()" >Valider</button>
   </form>
   </section>
   <section class="vueForm">
